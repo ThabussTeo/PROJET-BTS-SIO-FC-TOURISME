@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Etablissement {
+    - nom : string
+    - slug : string
+    - description : string
+    - numeroTelephone : string
+    - adressePostale : string
+    - ville : Ville
+    - adresseEmail : string
+    - image : string
+    - estActif : bool
+    - estSurAccueil : bool
+    - createdAt : DateTime
+    - updatedAt : DateTime
+    - category : array<Categorie>
+}
+
+class Ville {
+
+    - nom : string
+    - codePostal : string
+    - nomDepartement : string
+    - numeroDepartement : string
+    - nomRegion : string
+
+}
+
+class Categorie {
+
+    - nom : string
+    - createdAt : DateTime
+
+}
+
+Ville "0..*  " ---> "1  " Etablissement
+Categorie "0..*" ---> "1..*" Etablissement
+
+
+@enduml
