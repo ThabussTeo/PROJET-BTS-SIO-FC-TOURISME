@@ -1,0 +1,5 @@
+<?php
+
+const NOMBRE_DE_CATEGORIE = 5;
+const NOMBRE_DE_ETABLISSEMENT = 100;
+const NOMBRE_DE_VILLE = 1908;
