@@ -52,6 +52,7 @@ class AppFixtures extends Fixture
                           ->setEstSurAccueil($faker->boolean())
                           ->setCreatedAt($faker->dateTimeBetween("-1 week", "-3 day"))
                           ->setUpdatedAt($faker->dateTimeBetween("-1 day", "now"))
+                          ->addCategorie($categories[rand(0, NOMBRE_DE_CATEGORIE - 1)])
                           ->addCategorie($categories[rand(0, NOMBRE_DE_CATEGORIE - 1)]);
 
             $objectManager->persist($etablissement);
