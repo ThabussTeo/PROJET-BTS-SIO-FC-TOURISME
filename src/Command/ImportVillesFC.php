@@ -38,19 +38,22 @@ class ImportVillesFC extends Command
 
         foreach ($csv as $record)
         {
-
-            $ville = new Ville();
-            $ville->setCodePostal($record["Code postal"])
-                  ->setNom($record["Commune"])
-                  ->setNomDepartement($record["Nom département"])
-                  ->setNomRegion(($record["Région"]))
-                  ->setNumeroDepartement($record["Département"]);
-
-            if (in_array($ville->getNumeroDepartement(), $departements))
+            if (in_array($record["Département"], $departements))
             {
+                $ancienneCommune = "";
+                $ville = new Ville();
+                $ville->setCodePostal($record["Code postal"]);
+                if (!empty($record["Ancienne commune"]))
+                {
+                    $ancienneCommune = "-" . $record["Ancienne commune"];
+                }
+                $ville->setNom($record["Commune"].$ancienneCommune)
+                    ->setNomDepartement($record["Nom département"])
+                    ->setNomRegion(($record["Région"]))
+                    ->setNumeroDepartement($record["Département"]);
+
                 $this->manager->persist($ville);
             }
-
         }
 
         $this->manager->flush();
