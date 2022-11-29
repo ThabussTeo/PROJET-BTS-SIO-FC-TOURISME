@@ -1,0 +1,18 @@
+<div class="card w-50 mx-auto my-3">
+    <img src="https://th.bing.com/th/id/R.126a896ef6f67c346b16e40675c1faf7?rik=XsPp9Z6h7uGzhQ&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2ff%2ff3%2fTaj_Mahal-06.jpg&ehk=%2fGdSEk2vL3hPVm22OlokFqpa6zvFHTW6boC%2b4fqi2ro%3d&risl=1&pid=ImgRaw&r=0" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{ etablissement.nom }}</h5>
+        <p class="card-text">{{ etablissement.description | slice(0, 75) }}...</p>
+        <div class="pb-3">
+            {% for categorie in etablissement.categorie %}
+                <span class="badge bg-secondary">{{ categorie.nom }}</span>
+            {% endfor %}
+        </div>
+        <a href="{{ path('app_etablissement', {'id': etablissement.id}) }}" class="btn btn-primary">Voir</a>
+        <a href="{{ path('app_etablissements') }}" class="btn btn-secondary">Retour</a>
+    </div>
+
+    <div class="card-footer text-muted">
+        {{ etablissement.ville.codePostal }}, {{ etablissement.ville.nom }}
+    </div>
+</div>

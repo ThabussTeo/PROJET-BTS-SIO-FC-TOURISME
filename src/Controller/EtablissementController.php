@@ -12,8 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EtablissementController extends AbstractController
 {
-    #[Route('/etablissement', name: 'app_etablissement')]
-    public function index(EntityManagerInterface $entityManager, PaginatorInterface $paginator, Request $request): Response
+    #[Route('/etablissements', name: 'app_etablissements')]
+    public function etablissement(EntityManagerInterface $entityManager, PaginatorInterface $paginator, Request $request): Response
     {
 
         $pagination = $paginator->paginate(
@@ -22,8 +22,20 @@ class EtablissementController extends AbstractController
             9
         );
 
-        return $this->render('etablissement/index.html.twig', [
+        return $this->render('etablissements/index.html.twig', [
             'pagination' => $pagination
+        ]);
+    }
+
+    #[Route('/etablissements/{id}', name: 'app_etablissement')]
+    public function etablissements(EntityManagerInterface $entityManager, $id): Response
+    {
+
+
+        $etablissement = $entityManager->getRepository(Etablissement::class)->find($id);
+
+        return $this->render('etablissements/etablissement.html.twig', [
+            'etablissement' => $etablissement
         ]);
     }
 }
