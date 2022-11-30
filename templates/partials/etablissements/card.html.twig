@@ -9,7 +9,7 @@
                     <span class="badge bg-secondary">{{ categorie.nom }}</span>
                 {% endfor %}
             </div>
-            <a href="{{ path('app_etablissement', {'id': etablissement.id}) }}" class="btn btn-primary">Voir</a>
+            <a href="{{ path('app_etablissement', {'slug': etablissement.slug}) }}" class="btn btn-primary">Voir</a>
         </div>
 
         <div class="card-footer text-muted">

@@ -27,12 +27,12 @@ class EtablissementController extends AbstractController
         ]);
     }
 
-    #[Route('/etablissements/{id}', name: 'app_etablissement')]
-    public function etablissements(EntityManagerInterface $entityManager, $id): Response
+    #[Route('/etablissements/{slug}', name: 'app_etablissement')]
+    public function etablissements(EntityManagerInterface $entityManager, $slug): Response
     {
 
 
-        $etablissement = $entityManager->getRepository(Etablissement::class)->find($id);
+        $etablissement = $entityManager->getRepository(Etablissement::class)->findOneBy(["slug" => $slug]);
 
         return $this->render('etablissements/etablissement.html.twig', [
             'etablissement' => $etablissement
