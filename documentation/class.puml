@@ -14,7 +14,6 @@ class Etablissement {
     - estSurAccueil : bool
     - createdAt : DateTime
     - updatedAt : DateTime
-    - category : array<Categorie>
 }
 
 class Ville {
@@ -34,8 +33,22 @@ class Categorie {
 
 }
 
-Ville "0..*  " ---> "1  " Etablissement
-Categorie "0..*" ---> "1..*" Etablissement
+class Utilisateur {
+
+    - prenom : string
+    - nom : string
+    - pseudo : string
+    - adresseEmail : string
+    - motDePasse : string
+    - createdAt : DateTime
+    - updatedAt : DateTime
+    - roles : array
+    - estActif : bool
+
+}
+
+Ville "1  " ---> "0..*  " Etablissement
+Categorie "1..*" ---> "0..*" Etablissement
 
 
 @enduml
