@@ -16,7 +16,12 @@
 
     <div class="row">
         {% for etablissement in pagination %}
-            {% include "partials/etablissements/card.html.twig" %}
+
+            {% if etablissement.estActif %}
+
+                {% include "partials/etablissements/card.html.twig" %}
+
+            {% endif %}
         {% endfor %}
     </div>
 
