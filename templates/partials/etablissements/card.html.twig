@@ -6,10 +6,11 @@
             
                 {{ etablissement.nom }}             
 
-                {% if etablissement in app.user.getFavoris %}
-                    <i class="bi bi-star-fill ms-1 text-warning"></i>
+                {% if app.user %}
+                    {% if etablissement in app.user.getFavoris %}
+                        <i class="bi bi-star-fill ms-1 text-warning"></i>
+                    {% endif %}
                 {% endif %}
-
             </h5>
             <p class="card-text">{{ etablissement.description | slice(0, 75) }}...</p>
             <div class="pb-3">
