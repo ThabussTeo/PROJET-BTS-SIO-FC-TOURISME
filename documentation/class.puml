@@ -1,4 +1,4 @@
-@startuml
+@startuml doc
 'https://plantuml.com/class-diagram
 
 class Etablissement {
@@ -47,8 +47,8 @@ class Utilisateur {
 
 }
 
-Ville "1  " ---> "0..*  " Etablissement
-Categorie "1..*" ---> "0..*" Etablissement
-
+Ville "1  " --- "0..*  " Etablissement
+Categorie "1..*" --- "0..*" Etablissement
+Utilisateur "0..µ" --- "0..*" Etablissement
 
 @enduml

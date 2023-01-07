@@ -11,6 +11,15 @@
             {% endfor %}
         </div>
         <a href="{{ path('app_etablissements') }}" class="btn btn-primary">Retour</a>
+        {% if app.user %}
+
+            {% if etablissement in app.user.getFavoris %}
+                <a href="{{ path('app_favori_toggle', {'slug': etablissement.slug}) }}" class="btn btn-danger">Retirer des favori <i class="bi bi-star-fill ms-1 text-warning"></i></a>
+            {% else %}
+                <a href="{{ path('app_favori_toggle', {'slug': etablissement.slug}) }}" class="btn btn-warning">Ajouter comme favori <i class="bi bi-star"></i></a>
+            {% endif %}
+
+        {% endif %}
     </div>
     <div class="card-footer">
         {{ etablissement.adressePostale }}
