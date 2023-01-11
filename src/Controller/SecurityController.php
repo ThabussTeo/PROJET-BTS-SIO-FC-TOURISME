@@ -12,7 +12,6 @@ class SecurityController extends AbstractController
     #[Route('/connexion', name: 'app_connexion')]
     public function connexion(AuthenticationUtils $authenticationUtils): Response
     {
-
         $error = $authenticationUtils->getLastAuthenticationError();
 
         $lastUsername = $authenticationUtils->getLastUsername();

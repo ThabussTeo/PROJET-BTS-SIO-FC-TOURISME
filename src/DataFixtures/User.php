@@ -2,12 +2,14 @@
 
 namespace App\DataFixtures;
 
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
+
 
 class User extends Fixture
 {
@@ -38,8 +40,6 @@ class User extends Fixture
                  ->setCreatedAt($this->faker->dateTimeBetween("-3weeks"))
                  ->setEstActif($this->faker->boolean(80));
 
-
-
             if ($this->faker->boolean(50)) {
                 $user->setPseudo($this->faker->userName());
             }
@@ -49,26 +49,14 @@ class User extends Fixture
             }
 
 
-            if ($this->faker->boolean(80)) {
+            $user->setRoles(
+                [
+                    ROLES[array_rand(ROLES)]
+                ]
+            );
 
-                if ($this->faker->boolean(10)) {
-
-                    $user->setRoles(["ROLE_ADMIN"]);
-
-                } else {
-
-                    $user->setRoles(["ROLE_USER"]);
-
-                }
-
-            } else {
-
-                $user->setRoles(["ROLE_RESTAURANT"]);
-
-            }
 
             $objectManager->persist($user);
-
 
         }
 

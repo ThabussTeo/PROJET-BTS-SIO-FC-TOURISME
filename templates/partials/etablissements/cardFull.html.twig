@@ -1,6 +1,7 @@
 <div class="card w-50 mx-auto my-3">
     <img src="https://th.bing.com/th/id/R.126a896ef6f67c346b16e40675c1faf7?rik=XsPp9Z6h7uGzhQ&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2ff%2ff3%2fTaj_Mahal-06.jpg&ehk=%2fGdSEk2vL3hPVm22OlokFqpa6zvFHTW6boC%2b4fqi2ro%3d&risl=1&pid=ImgRaw&r=0" class="card-img-top" alt="...">
     <div class="card-body">
+        {{ app.request.get('_route') }}
         <h5 class="card-title">{{ etablissement.nom }}</h5>
         <p class="card-text">{{ etablissement.description }}</p>
         <h6>Adresse Email : {{ etablissement.adresseEmail }}</h6>
@@ -10,7 +11,11 @@
                 <span class="badge bg-secondary">{{ categorie.nom }}</span>
             {% endfor %}
         </div>
-        <a href="{{ path('app_etablissements') }}" class="btn btn-primary">Retour</a>
+
+
+
+
+
         {% if app.user %}
 
             {% if etablissement in app.user.getFavoris %}

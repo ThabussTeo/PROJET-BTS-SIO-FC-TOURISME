@@ -8,6 +8,7 @@
             {% if app.user is null %}
                 <a href="{{ path('app_connexion') }}"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Se connecter</button></a>
             {% else %}
+                <li class="nav-item"><a class="nav-link me-lg-3" href="{{ path('app_etablissements_favoris') }}">Favoris</a></li>
                 <a href="{{ path('app_deconnexion') }}"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Se déconnecter</button></a>
             {% endif %}
         </ul>

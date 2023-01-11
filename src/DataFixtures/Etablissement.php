@@ -1,7 +1,7 @@
 <?php
 
 namespace App\DataFixtures;
-include "utils/consts/fixturesConsts.php";
+include "utils/consts/etablissementConsts.php";
 
 use App\Entity\Categorie;
 use App\Entity\Ville;
